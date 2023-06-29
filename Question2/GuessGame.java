@@ -104,6 +104,7 @@ public class GuessGame extends JFrame {
             } else {
                 if (guessedNumbers.contains(userGuess)) {
                     userMessageLabel.setText("You already guessed " + userGuess + ". Try a different number.");
+                    guessBox.setText("");
                 } else {
                     guessedNumbers.add(userGuess);
                     compareGuess(userGuess);
@@ -113,6 +114,7 @@ public class GuessGame extends JFrame {
             }
         } catch (NumberFormatException ex) {
             userMessageLabel.setText("Invalid input. Please enter a valid number.");
+            guessBox.setText("");
         }
     }
 

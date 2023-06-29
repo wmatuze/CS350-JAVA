@@ -3,6 +3,8 @@ package Question3;
 import org.junit.Assert;
 import org.junit.Test;
 
+import Question3.BasePlusCommissionEmployee;
+
 public class EmployeeTest {
     @Test
     public void commissionEmployeeTest() {

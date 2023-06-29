@@ -1,4 +1,3 @@
-package Question3;
 
 public class HourlyEmployee extends Employee {
     private double hours;

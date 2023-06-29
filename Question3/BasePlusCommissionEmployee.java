@@ -1,5 +1,4 @@
 package Question3;
-
 public class BasePlusCommissionEmployee extends CommissionEmployee {
     private double baseSalary;
 

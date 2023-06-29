@@ -1,5 +1,4 @@
 package Question3;
-
 public class BasePlusCommissionEmployeeTest {
     public static void main(String[] args) {
         // Create a BasePlusCommissionEmployee object

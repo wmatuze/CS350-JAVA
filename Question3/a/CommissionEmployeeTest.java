@@ -1,16 +1,16 @@
-package Question3.b;
+package Question3.a;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class HourlyEmployeeTest {
-    private HourlyEmployee employee;
+public class CommissionEmployeeTest {
+    private CommissionEmployee employee;
 
     @Before
     public void setUp() {
-        // Arrange: Create an instance of HourlyEmployee for testing
-        employee = new HourlyEmployee("Jane", "Smith", "987654321", 20.0, 45);
+        // Arrange: Create an instance of CommissionEmployee for testing
+        employee = new CommissionEmployee("John", "Doe", "123456789", 10000, 0.06);
     }
 
     @Test
@@ -19,7 +19,7 @@ public class HourlyEmployeeTest {
         String firstName = employee.getFirstName();
 
         // Assert: Check if the result matches the expected value
-        assertEquals("Jane", firstName);
+        assertEquals("John", firstName);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class HourlyEmployeeTest {
         String lastName = employee.getLastName();
 
         // Assert: Check if the result matches the expected value
-        assertEquals("Smith", lastName);
+        assertEquals("Doe", lastName);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class HourlyEmployeeTest {
         String ssn = employee.getSocialSecurityNumber();
 
         // Assert: Check if the result matches the expected value
-        assertEquals("987654321", ssn);
+        assertEquals("123456789", ssn);
     }
 
     @Test
@@ -46,9 +46,8 @@ public class HourlyEmployeeTest {
         double earnings = employee.earnings();
 
         // Assert: Check if the result matches the expected value
-        assertEquals(20.0 * 40 + 20.0 * 1.5 * 5, earnings, 0.01); // Using delta for double comparison
+        assertEquals(10000 * 0.06, earnings, 0.01); // Using delta for double comparison
     }
 
-    // Additional tests for setWage, setHours, and toString can be added.
+    // Additional tests for setGrossSales, setCommissionRate, and toString can be added.
 }
-

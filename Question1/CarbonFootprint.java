@@ -1,3 +1,12 @@
+
+/* Sources:
+Carbon footprint calcuations for all items (except bicycle) came from:
+http://www.carbonfootprint.com/calculator.aspx
+
+Calculations for the Bicycle carbon footprint came from:
+http://www.guardian.co.uk/environment/2010/jun/08/carbon-footprint-cycling
+*/
+
 // Interface defining the CarbonFootprint behavior
 interface CarbonFootprint {
     double getCarbonFootprint(); //Method to calculate the carbonfootprint

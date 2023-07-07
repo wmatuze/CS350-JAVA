@@ -93,7 +93,7 @@ public class GuessTheNumberGame extends Application {
         playAgainButton.setVisible(true);
     }
 
-    private int generateRandomNumber() {
+    int generateRandomNumber() {
         Random random = new Random();
         return random.nextInt(1000) + 1;
     }

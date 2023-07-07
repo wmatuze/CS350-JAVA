@@ -40,15 +40,23 @@ public class HourlyEmployeeTest {
         assertEquals("987654321", ssn);
     }
 
+    // @Test
+    // public void testEarnings() {
+    // // Act: Perform the operation to calculate the earnings
+    // double earnings = employee.earnings();
+
+    // // Assert: Check if the result matches the expected value
+    // assertEquals(20.0 * 40 + 20.0 * 1.5 * 5, earnings, 0.01); // Using delta for
+    // double comparison
+    // }
     @Test
     public void testEarnings() {
         // Act: Perform the operation to calculate the earnings
         double earnings = employee.earnings();
 
         // Assert: Check if the result matches the expected value
-        assertEquals(20.0 * 40 + 20.0 * 1.5 * 5, earnings, 0.01); // Using delta for double comparison
+        assertEquals(20.0 * 40 + 20.0 * 1.5 * (45 - 40), earnings, 0.01); // Using delta for double comparison
     }
 
     // Additional tests for setWage, setHours, and toString can be added.
 }
-

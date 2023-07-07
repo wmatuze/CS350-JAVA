@@ -73,7 +73,7 @@ class Bicycle implements CarbonFootprint {
 
     public double getCarbonFootprint() {
         // Assuming carbon footprint calculation is based on miles ridden
-        return milesRidden * 0.012; // Fixed calculation to match the provided formula
+        return milesRidden * 0.012; 
     }
 
     public String getBicycleType() {

@@ -1,45 +1,47 @@
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class CarbonFootprintApplicationTest {
-
+    // Testing the getCarbonFootprint method from the Building class
     @Test
-    public void testBuildingCarbonFootprintCalculation() {
+    public void testBuilding() {
         // Arrange
-        Building building = new Building("FINDECO", 230, 110);
-        double expectedCarbonFootprint = (230 * 0.7) + (110 * 0.5);
+        Building building = new Building("Society Building", 230, 110);
 
-        //Act
-        double actualCarbonFootprint = building.getCarbonFootprint();
+        // Act
+        double expected = (230 * 0.7) + (110 * 0.5);
+        double actual = building.getCarbonFootprint();
 
         // Assert
-        Assert.assertEquals(expectedCarbonFootprint, actualCarbonFootprint, 0.01);
+        assertEquals(expected, actual, 0.001);
     }
 
-
+    // Testing the getCarbonFootprint method from the Car class
     @Test
-    public void testCarCarbonFootprintCalculation() {
+    public void testCar() {
         // Arrange
-        Car car = new Car("BWM-X6", 600, 1200);
-        double expectedCarbonFootprint = (600 * 2.3) + (1200 * 0.012);
+        Car car = new Car("Benz C200", 600, 1200);
 
-        //Act
-        double actualCarbonFootprint = car.getCarbonFootprint();
+        // Act
+        double expected = (600 * 2.3) + (1200 * 0.012);
+        double actual = car.getCarbonFootprint();
 
-        //Assert
-        Assert.assertEquals(expectedCarbonFootprint, actualCarbonFootprint, 0.01);
+        // Assert
+        assertEquals(expected, actual, 0.001);
     }
-    
+
+    // Testing the getCarbonFootprint method from the Bicycle class
     @Test
-    public void testBicycleCarbonFootprintCalculation() {
+    public void testBicycle() {
         // Arrange
-        Bicycle bicycle = new Bicycle("Buffalo", 8000);
-        double expectedCarbonFootprint = 8000 * 0.012;
+        Bicycle bicycle = new Bicycle("Mountain Bike", 800);
 
-        //Act
-        double actualCarbonFootprint = bicycle.getCarbonFootprint();
+        // Act
+        double expected = 800 * 0.012;
+        double actual = bicycle.getCarbonFootprint();
 
-        //Asset
-        Assert.assertEquals(expectedCarbonFootprint, actualCarbonFootprint, 0.01);
+        // Assert
+        assertEquals(expected, actual, 0.001);
     }
 }

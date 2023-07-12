@@ -9,20 +9,57 @@ public class GuessGame extends JFrame {
     private JButton newGameButton;
     private JButton enterButton;
     private JButton exitButton;
-    private JTextField guessBox;
+    JTextField guessBox;
     private JLabel initialTextLabel;
     private JLabel enterLabel;
-    private JLabel userMessageLabel;
-    private int randomNumber;
+    JLabel userMessageLabel;
+    int randomNumber;
     private int userGuess;
-    private int counter = 0;
+    int counter = 0;
     private Set<Integer> guessedNumbers = new HashSet<>();
+
+    JButton loginButton;
+    private JLabel usernameLabel;
+    private JLabel passwordLabel;
+    JTextField usernameField;
+    JPasswordField passwordField;
+
+    JFrame loginFrame;
 
     public GuessGame() {
         super("Guessing Game"); // passes the string "Guessing Game" as an argument to the JFrame constructor.
 
         ImageIcon icon = new ImageIcon("Question2/logo1.png");
         setIconImage(icon.getImage());
+
+        // Initialize login components
+        loginButton = new JButton("Login");
+        usernameLabel = new JLabel("Username:");
+        passwordLabel = new JLabel("Password:");
+        usernameField = new JTextField(10);
+        passwordField = new JPasswordField(10);
+
+        // Create login frame
+        loginFrame = new JFrame("Login");
+        loginFrame.setLayout(new GridLayout(3, 2));
+        loginFrame.setSize(300, 150);
+        loginFrame.setLocationRelativeTo(null); // Center the login frame
+        loginFrame.setIconImage(icon.getImage());
+        loginFrame.setLayout(new GridLayout(3, 2));
+        // loginFrame.pack();
+
+        // Add components to login frame
+        loginFrame.add(usernameLabel);
+        loginFrame.add(usernameField);
+        loginFrame.add(passwordLabel);
+        loginFrame.add(passwordField);
+        loginFrame.add(loginButton);
+
+        // Register login button event handler
+        loginButton.addActionListener(new LoginButtonHandler());
+
+        // Make the login frame visible
+        loginFrame.setVisible(true);
 
         // Initialize components
         newGameButton = new JButton("New Game");
@@ -85,14 +122,41 @@ public class GuessGame extends JFrame {
         setSize(500, 200);
     }
 
+    // LoginButtonHandler class
+    class LoginButtonHandler implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String username = usernameField.getText();
+            String password = new String(passwordField.getPassword());
+
+            // Perform login authentication
+            if (authenticate(username, password)) {
+                // If authentication is successful, show the game frame and hide the login frame
+                setVisible(true);
+                loginFrame.setVisible(false);
+            } else {
+                // If authentication fails, show an error message
+                JOptionPane.showMessageDialog(loginFrame, "Invalid username or password", "Login Failed",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    // Perform login authentication (dummy method, replace with your own
+    // implementation)
+    private boolean authenticate(String username, String password) {
+        // Check if the username and password match a valid login credential
+        // Replace this logic with your own authentication mechanism
+        return username.equals("admin") && password.equals("password");
+    }
+
     // Generate a new random number
-    private void generateRandomNumber() {
+    void generateRandomNumber() {
         randomNumber = new Random().nextInt(1000) + 1;
         guessedNumbers = new HashSet<>();
     }
 
     // Reset the game to start a new one
-    private void resetGame() {
+    void resetGame() {
         getContentPane().setBackground(Color.WHITE);
         userMessageLabel.setText("");
         guessBox.setText("");
@@ -102,7 +166,8 @@ public class GuessGame extends JFrame {
 
     // Check if the user's guess is correct
     private void checkGuess() {
-        String guessText = guessBox.getText().trim(); //  retrieves the text entered by the user, removes any leading or trailing whitespace stores it in the guessText variable
+        String guessText = guessBox.getText().trim(); // retrieves the text entered by the user, removes any leading or
+                                                      // trailing whitespace stores it in the guessText variable
 
         if (guessText.isEmpty()) {
             return;
@@ -130,7 +195,7 @@ public class GuessGame extends JFrame {
     }
 
     // Compare the user's guess with the random number
-    private void compareGuess(int userGuess) {
+    void compareGuess(int userGuess) {
         counter++;
 
         if (userGuess == randomNumber) {
@@ -184,10 +249,10 @@ public class GuessGame extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            GuessGame game = new GuessGame();
-            game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            new GuessGame();
+            // game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             // game.pack(); // Resize frame to fit components
-            game.setVisible(true);
+            // game.setVisible(true);
         });
     }
 }

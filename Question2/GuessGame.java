@@ -16,10 +16,13 @@ public class GuessGame extends JFrame {
     private int randomNumber;
     private int userGuess;
     private int counter = 0;
-    private Set<Integer> guessedNumbers;
+    private Set<Integer> guessedNumbers = new HashSet<>();
 
     public GuessGame() {
-        super("Guessing Game"); //passes the string "Guessing Game" as an argument to the JFrame constructor.
+        super("Guessing Game"); // passes the string "Guessing Game" as an argument to the JFrame constructor.
+
+        ImageIcon icon = new ImageIcon("Question2/logo1.png");
+        setIconImage(icon.getImage());
 
         // Initialize components
         newGameButton = new JButton("New Game");
@@ -34,7 +37,7 @@ public class GuessGame extends JFrame {
         generateRandomNumber();
 
         // Set the layout manager to BorderLayout
-        setLayout(new BorderLayout()); //determines how the components within the JFrame are arranged and positioned.
+        setLayout(new BorderLayout()); // determines how the components within the JFrame are arranged and positioned.
 
         // Create panel for input and labels
         JPanel inputPanel = new JPanel(new FlowLayout());
@@ -42,24 +45,33 @@ public class GuessGame extends JFrame {
         inputPanel.add(guessBox);
         inputPanel.add(enterButton);
 
-        // Create panel for message label and buttons
-        JPanel messagePanel = new JPanel(new GridLayout(1, 3)); // Use GridLayout for buttons
-        messagePanel.add(userMessageLabel);
-        messagePanel.add(newGameButton);
-        messagePanel.add(exitButton);
+        // Create panel for message label
+        JPanel messagePanel = new JPanel(new BorderLayout());
+        messagePanel.add(userMessageLabel, BorderLayout.CENTER);
+
+        // Create panel for new game and exit buttons
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+        buttonPanel.add(newGameButton);
+        buttonPanel.add(exitButton);
+
+        // Create panel for message and button panels
+        JPanel contentPanel = new JPanel(new BorderLayout());
+        contentPanel.add(messagePanel, BorderLayout.CENTER);
+        contentPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         // Add components to the frame
         add(initialTextLabel, BorderLayout.NORTH);
         add(inputPanel, BorderLayout.CENTER);
-        add(messagePanel, BorderLayout.SOUTH);
+        add(contentPanel, BorderLayout.SOUTH);
 
-        // Create accelerator keys to enhances the user experience by providing alternative keyboard shortcuts
+        // Create accelerator keys to enhances the user experience by providing
+        // alternative keyboard shortcuts
         newGameButton.setMnemonic('N');
         exitButton.setMnemonic('X');
         enterButton.setMnemonic('E');
 
         // Define and register window event handler
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //determines what happens when the user closes the window
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // determines what happens when the user closes the window
 
         // Create and register button event handlers
         newGameButton.addActionListener(new NewGameButtonHandler());
@@ -71,7 +83,6 @@ public class GuessGame extends JFrame {
 
         // Set default frame size
         setSize(500, 200);
-        //setVisible(true);
     }
 
     // Generate a new random number
@@ -91,7 +102,7 @@ public class GuessGame extends JFrame {
 
     // Check if the user's guess is correct
     private void checkGuess() {
-        String guessText = guessBox.getText().trim();
+        String guessText = guessBox.getText().trim(); //  retrieves the text entered by the user, removes any leading or trailing whitespace stores it in the guessText variable
 
         if (guessText.isEmpty()) {
             return;
@@ -175,7 +186,7 @@ public class GuessGame extends JFrame {
         SwingUtilities.invokeLater(() -> {
             GuessGame game = new GuessGame();
             game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            //game.pack(); // Resize frame to fit components
+            // game.pack(); // Resize frame to fit components
             game.setVisible(true);
         });
     }

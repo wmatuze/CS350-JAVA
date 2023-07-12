@@ -19,7 +19,7 @@ public class BasePlusCommissionEmployeeApp {
         employee.setBaseSalary(1000);
 
         System.out.printf("%n%s:%n%n%s%n", "Updated employee information obtained by toString", employee);
-        System.out.printf("%s %.2f%n", "Earnings: $", employee.earnings());
+        System.out.printf("%s %.2f%n", "Earnings: ZMW0", employee.earnings());
     }
 }
 
